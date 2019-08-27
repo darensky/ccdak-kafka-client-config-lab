@@ -12,6 +12,11 @@ public class Main {
         props.put("bootstrap.servers", "localhost:9092");
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        
+        props.put("acks", "all");
+        props.put("buffer.memory", "12582912");
+        props.put("connections.max.idle.ms", "300000");
+        
         Producer<String, String> producer = new KafkaProducer<>(props);
         producer.send(new ProducerRecord<>("inventory_purchases", "apples", "1"));
         producer.send(new ProducerRecord<>("inventory_purchases", "apples", "3"));
